@@ -1,0 +1,136 @@
+@import url(fonts/inter/inter.css);
+
+.page {
+  background-color: black;
+  color: #FFFFFF;
+  font-family: 'Inter', Arial, sans-serif;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+}
+
+.header {
+  max-width: 880px;
+  margin: 0 auto;
+  padding-top: 45px;
+  border-bottom: 1px solid #545454;
+}
+
+.header__logo {
+  max-width: 145px;
+  margin-bottom: 40px;
+}
+
+.profile {
+  max-width: 880px;
+  margin: 40px auto 0;
+  display: flex;
+}
+
+.profile__avatar {
+  border-radius: 50%;
+  width: 120px;
+}
+
+.profile__info {
+  margin: 17px 0 25px 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.profile__name {
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 56px;
+  margin: 0;
+}
+
+.profile__status {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: normal;
+  margin: 0;
+}
+
+.profile__edit {
+  display: inline-block;
+  background-image: url(images/profile__edit.svg);
+  color: white;
+  margin-left: 17px;
+  width: 24px;
+  height: 24px;
+}
+
+.profile__add-button {
+  background-image: url(images/profile__add-button.svg);
+  color: white;
+  width: 150px;
+  height: 50px;
+  margin: 35px 0 35px auto;
+}
+
+.element {
+  max-width: 880px;
+  margin: 50px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 17px;
+}
+
+.element__group {
+  max-width: 282px;
+  display: flex;
+  flex-direction: column;
+}
+
+.element__photo {
+  width: 100%;
+  height: 282px;
+  border-radius: 10px 10px 0 0;
+  object-fit: cover;
+}
+
+.element__photo-description {
+  display: flex;
+  width: 100%;
+  background-color: #FFFFFF;
+  border-radius: 0 0 10px 10px;
+  padding-top: 25px;
+  padding-bottom: 32px;
+}
+
+.element__photo-name {
+  margin: 0 0 0 20px;
+  /* padding: 25px 20px 32px 20px; */
+  color: #000000;
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+}
+
+.element__like {
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-image: url(/images/element__like.svg);
+  width: 21px;
+  height: 18px;
+  color: #000000;
+  margin: auto 20px auto auto;
+}
+
+.footer {
+  max-width: 880px;
+  margin: 70px auto 0;
+  padding-bottom: 60px;
+}
+
+.footer__copyright {
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  color: #545454;
+  margin: 0;
+}
