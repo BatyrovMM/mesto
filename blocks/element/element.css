@@ -1,0 +1,31 @@
+@import url(__group/element__group.css);
+@import url(__photo/element__photo.css);
+@import url(__photo-description/element__photo-description.css);
+@import url(__photo-name/element__photo-name.css);
+@import url(__like/element__like.css);
+
+
+.element {
+  max-width: 880px;
+  margin: 50px auto 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px 17px;
+}
+
+@media screen and (max-width: 920px) {
+  .element {
+    max-width: 1000px;
+    margin: 50px auto 0;
+    grid-template-columns: repeat(2, 282px);
+    justify-content: center;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .element {
+    margin: 36px auto 0;
+    grid-template-columns: repeat(1, 282px);
+    gap: 20px;
+  }
+}
