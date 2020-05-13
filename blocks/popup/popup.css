@@ -1,0 +1,20 @@
+@import url(__item/popup__item.css);
+@import url(__window/popup__window.css);
+@import url(__redact/popup__redact.css);
+@import url(__info-change/popup__info-change.css);
+@import url(__name-change/popup__name-change.css);
+@import url(__status-change/popup__status-change.css);
+@import url(__info-save/popup__info-save.css);
+@import url(__close/popup__close.css);
+
+.popup {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #00000080;
+  display: flex;
+}

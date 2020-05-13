@@ -1,12 +1,13 @@
 .profile__edit {
-  display: inline-block;
+  display: inline-flex;
   background-image: url(../../../images/profile__edit.svg);
   color: white;
-  margin-left: 17px;
+  margin: auto 0 auto 17px;
   width: 24px;
   height: 24px;
   border: none;
   padding: 0;
+  grid-area: edit;
   background-color: inherit;
   cursor: pointer;
   transition: .8s linear;
@@ -21,7 +22,7 @@
   .profile__edit {
     width: 18px;
     height: 18px;
-    margin-left: 10px;
+    margin: auto 0 auto 5px;
     background-size: contain;
   }
 }

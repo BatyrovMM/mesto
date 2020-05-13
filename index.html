@@ -13,55 +13,69 @@
 <body>
 <div class="page">
   <header class="header">
-    <img src="images/mesto__logo.svg" alt="" class="header__logo">
+    <img src="images/mesto__logo.svg" alt="логотип `Место`" class="header__logo">
   </header>
   <main class="content">
   <section class="profile">
-    <img src="images/jack-kusto.jpg" alt="" class="profile__avatar">
+    <img src="images/jack-kusto.jpg" alt="аватар профиля" class="profile__avatar">
     <div class="profile__info">
-      <h1 class="profile__name">Жак-Ив Кусто<button class="profile__edit"></button></h1>
+      <h1 class="profile__name">Жак-Ив Кусто</h1>
+      <button class="profile__edit"></button>
       <p class="profile__status">Исследователь океана</p>
     </div>
     <button class="profile__add-button"></button>
   </section>
+  <section class="display-none popup">
+    <div class="popup__item">
+    <div class="popup__window">
+      <h2 class="popup__redact">Редактировать профиль</h2>
+      <form class="popup__info-change">
+        <input class="popup__name-change" type="text">
+        <input class="popup__status-change" type="text">
+        <button type="button" class="popup__info-save">Сохранить</button>
+      </form>
+    </div>
+    <button class="popup__close"></button>
+    </div>
+  </section>
   <section class="element">
     <div class="element__group">
-      <img class="element__photo" src="images/mercury-1.jpg" alt="">
+      <img class="element__photo" src="images/mercury-1.jpg" alt="Меркурий">
       <div class="element__photo-description">
         <p class="element__photo-name">Меркурий</p>
         <div class="element__like"></div>
       </div>
     </div>
     <div class="element__group">
-      <img class="element__photo" src="images/venus-2.jpg" alt="">
+      <img class="element__photo" src="images/venus-2.jpg" alt="Венера">
       <div class="element__photo-description">
         <p class="element__photo-name">Венера</p>
         <div class="element__like"></div>
       </div>
     </div>
     <div class="element__group">
-      <img class="element__photo" src="images/earth-3.jpg" alt="">
+      <img class="element__photo" src="images/earth-3.jpg" alt="Земля">
       <div class="element__photo-description">
         <p class="element__photo-name">Земля</p>
         <div class="element__like"></div>
       </div>
     </div>
     <div class="element__group">
-      <img class="element__photo" src="images/mars-4.jpg" alt="">
+      <img class="element__photo" src="images/mars-4.jpg" alt="Марс">
       <div class="element__photo-description">
         <p class="element__photo-name">Марс</p>
         <div class="element__like"></div>
       </div>
     </div>
     <div class="element__group">
-      <img class="element__photo" src="images/jupiter-5.jpg" alt="">
+      <img class="element__photo" src="images/jupiter-5.jpg" alt="Юпитер">
       <div class="element__photo-description">
         <p class="element__photo-name">Юпитер</p>
         <div class="element__like"></div>
       </div>
     </div>
     <div class="element__group">
-      <img class="element__photo" src="images/saturn-6.jpg" alt="">
+      <img class="element__photo" src="images/saturn-6.jpg" alt="Сатурн">
       <div class="element__photo-description">
         <p class="element__photo-name">Сатурн</p>
         <div class="element__like"></div>
@@ -73,5 +87,6 @@
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
 </div>
+<script src="/js/script.js"></script>
 </body>
 </html>
