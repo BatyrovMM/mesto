@@ -1,11 +1,11 @@
-@import url(__group/element__group.css);
-@import url(__photo/element__photo.css);
-@import url(__photo-description/element__photo-description.css);
-@import url(__photo-name/element__photo-name.css);
-@import url(__like/element__like.css);
+@import url(__group/cards__group.css);
+@import url(__photo/cards__photo.css);
+@import url(__photo-description/cards__photo-description.css);
+@import url(__photo-name/cards__photo-name.css);
+@import url(__like/cards__like.css);
 
 
-.element {
+.cards {
   max-width: 880px;
   margin: 50px auto 0;
   display: grid;
@@ -14,7 +14,7 @@
 }
 
 @media screen and (max-width: 920px) {
-  .element {
+  .cards {
     max-width: 1000px;
     margin: 50px auto 0;
     grid-template-columns: repeat(2, 282px);
@@ -23,7 +23,7 @@
 }
 
 @media screen and (max-width: 700px) {
-  .element {
+  .cards {
     margin: 36px auto 0;
     grid-template-columns: repeat(1, 282px);
     gap: 20px;

@@ -7,25 +7,11 @@
   <meta name="description" content="Проектная работа №4">
   <meta name="keywords" content="путешествия, место, адаптивная, вёрстка, проектная, работа, javascript, 4">
   <link rel="stylesheet" href="pages/index.css">
-  <link rel="stylesheet" href="vendor/normalize.css">
   <title>Место</title>
 </head>
 <body>
 <div class="page">
-  <header class="header">
-    <img src="images/mesto__logo.svg" alt="логотип `Место`" class="header__logo">
-  </header>
-  <main class="content">
-  <section class="profile">
-    <img src="images/jack-kusto.jpg" alt="аватар профиля" class="profile__avatar">
-    <div class="profile__info">
-      <h1 class="profile__name">Жак-Ив Кусто</h1>
-      <button class="profile__edit"></button>
-      <p class="profile__status">Исследователь океана</p>
-    </div>
-    <button class="profile__add-button"></button>
-  </section>
-  <section class="display-none popup">
+  <section class="popup_none popup">
     <div class="popup__item">
     <div class="popup__window">
       <h2 class="popup__redact">Редактировать профиль</h2>
@@ -35,50 +21,63 @@
         <button type="button" class="popup__info-save">Сохранить</button>
       </form>
     </div>
-    <button class="popup__close"></button>
+    <button class="popup__close" type="button"></button>
     </div>
   </section>
-  <section class="element">
-    <div class="element__group">
-      <img class="element__photo" src="images/mercury-1.jpg" alt="Меркурий">
-      <div class="element__photo-description">
-        <p class="element__photo-name">Меркурий</p>
-        <div class="element__like"></div>
+  <header class="header">
+    <img src="images/mesto__logo.svg" alt="логотип `Место`" class="header__logo">
+  </header>
+  <main class="content">
+  <section class="profile">
+    <img src="images/jack-kusto.jpg" alt="аватар профиля" class="profile__avatar">
+    <div class="profile__info">
+      <h1 class="profile__name">Жак-Ив Кусто</h1>
+      <button class="profile__edit" type="button"></button>
+      <p class="profile__status">Исследователь океана</p>
+    </div>
+    <button class="profile__add-button" type="button"></button>
+  </section>
+  <section class="cards">
+    <div class="cards__group">
+      <img class="cards__photo" src="images/mercury-1.jpg" alt="Меркурий">
+      <div class="cards__photo-description">
+        <p class="cards__photo-name">Меркурий</p>
+        <button class="cards__like" type="button"></button>
       </div>
     </div>
-    <div class="element__group">
-      <img class="element__photo" src="images/venus-2.jpg" alt="Венера">
-      <div class="element__photo-description">
-        <p class="element__photo-name">Венера</p>
-        <div class="element__like"></div>
+    <div class="cards__group">
+      <img class="cards__photo" src="images/venus-2.jpg" alt="Венера">
+      <div class="cards__photo-description">
+        <p class="cards__photo-name">Венера</p>
+        <button class="cards__like" type="button"></button>
       </div>
     </div>
-    <div class="element__group">
-      <img class="element__photo" src="images/earth-3.jpg" alt="Земля">
-      <div class="element__photo-description">
-        <p class="element__photo-name">Земля</p>
-        <div class="element__like"></div>
+    <div class="cards__group">
+      <img class="cards__photo" src="images/earth-3.jpg" alt="Земля">
+      <div class="cards__photo-description">
+        <p class="cards__photo-name">Земля</p>
+        <button class="cards__like" type="button"></button>
       </div>
     </div>
-    <div class="element__group">
-      <img class="element__photo" src="images/mars-4.jpg" alt="Марс">
-      <div class="element__photo-description">
-        <p class="element__photo-name">Марс</p>
-        <div class="element__like"></div>
+    <div class="cards__group">
+      <img class="cards__photo" src="images/mars-4.jpg" alt="Марс">
+      <div class="cards__photo-description">
+        <p class="cards__photo-name">Марс</p>
+        <button class="cards__like" type="button"></button>
       </div>
     </div>
-    <div class="element__group">
-      <img class="element__photo" src="images/jupiter-5.jpg" alt="Юпитер">
-      <div class="element__photo-description">
-        <p class="element__photo-name">Юпитер</p>
-        <div class="element__like"></div>
+    <div class="cards__group">
+      <img class="cards__photo" src="images/jupiter-5.jpg" alt="Юпитер">
+      <div class="cards__photo-description">
+        <p class="cards__photo-name">Юпитер</p>
+        <button class="cards__like" type="button"></button>
       </div>
     </div>
-    <div class="element__group">
-      <img class="element__photo" src="images/saturn-6.jpg" alt="Сатурн">
-      <div class="element__photo-description">
-        <p class="element__photo-name">Сатурн</p>
-        <div class="element__like"></div>
+    <div class="cards__group">
+      <img class="cards__photo" src="images/saturn-6.jpg" alt="Сатурн">
+      <div class="cards__photo-description">
+        <p class="cards__photo-name">Сатурн</p>
+        <button class="cards__like" type="button"></button>
       </div>
     </div>
   </section>

@@ -6,6 +6,7 @@
 @import url(__status-change/popup__status-change.css);
 @import url(__info-save/popup__info-save.css);
 @import url(__close/popup__close.css);
+@import url(_none/popup_none.css);
 
 .popup {
   position: absolute;
