@@ -1,8 +1,11 @@
 .profile__name {
+  max-width: 514px;
   font-weight: 500;
   font-size: 42px;
   line-height: 56px;
   margin: 0;
+  overflow: hidden;
+  white-space: nowrap;
   text-overflow: ellipsis;
   grid-area: name;
 }
