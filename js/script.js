@@ -18,7 +18,8 @@ function closePopup() {
   popup.classList.add('popup_none');
 }
 
-window.onkeydown = function(event) {
+// Закрывает popup при нажатии на esc
+window.onkeydown = function(event) { 
   if (event.keyCode == 27) {
     closePopup();
   }
