@@ -19,9 +19,9 @@
 @media screen and (max-width: 700px) {
   .profile__add-button {
     background-image: url(../../../images/profile__add-button-mobile.svg);
-    width: 282px;
+    width: 284px;
     margin: 35px auto 0;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
   }
 }

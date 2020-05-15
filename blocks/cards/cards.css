@@ -1,10 +1,3 @@
-@import url(__group/cards__group.css);
-@import url(__photo/cards__photo.css);
-@import url(__photo-description/cards__photo-description.css);
-@import url(__photo-name/cards__photo-name.css);
-@import url(__like/cards__like.css);
-
-
 .cards {
   max-width: 880px;
   margin: 50px auto 0;

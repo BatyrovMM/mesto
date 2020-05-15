@@ -1,0 +1,13 @@
+@import url(__photo/card__photo.css);
+@import url(__photo-description/card__photo-description.css);
+@import url(__photo-name/card__photo-name.css);
+@import url(__like/card__like.css);
+
+
+.card {
+  max-width: 282px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  overflow: hidden;
+}
