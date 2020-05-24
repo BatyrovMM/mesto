@@ -1,4 +1,6 @@
 @import url(__photo/card__photo.css);
+@import url(__delete/card__delete.css);
+@import url(__photo/card__photo.css);
 @import url(__photo-description/card__photo-description.css);
 @import url(__photo-name/card__photo-name.css);
 @import url(__like/card__like.css);
@@ -10,4 +12,5 @@
   flex-direction: column;
   border-radius: 10px;
   overflow: hidden;
+  position: relative;
 }

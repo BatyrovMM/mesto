@@ -10,4 +10,10 @@
   cursor: pointer;
   color: #000000;
   margin: auto 20px auto auto;
+  transition: .8s linear;
+}
+
+.card__like:hover {
+  transition: .8s linear;
+  opacity: .6;
 }

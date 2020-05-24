@@ -1,5 +1,4 @@
 .profile__edit {
-  display: inline-flex;
   background-image: url(../../../images/profile__edit.svg);
   color: white;
   margin: auto 0 auto 17px;
