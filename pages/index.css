@@ -8,3 +8,93 @@
 @import url(../blocks/cards/cards.css);
 @import url(../blocks/card/card.css);
 @import url(..//blocks/footer/footer.css);
+
+div:focus, button:focus {
+  outline: none;
+}
+
+input:focus {
+  outline: none;
+  border-bottom: 1px solid #000000;
+}
+
+/* .popup__new-card-add {
+  display: flex;
+  flex-direction: column;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.popup__new-card-save {
+  width: 80%;
+  margin: 50px auto 40px;
+  padding: 14px 0 18px;
+  border: none;
+  color: #FFFFFF;
+  background-color: #000000;
+  border-radius: 2px;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  cursor: pointer;
+  transition: .8s linear;
+}
+
+.popup__new-card-save:hover {
+  transition: .8s linear;
+  opacity: .6;
+}
+
+.popup__new-card-name {
+  width: 80%;
+  padding-bottom: 14px;
+  margin: 50px auto 0;
+  border: 0;
+  border-bottom: 1px solid #00000033;
+}
+
+.popup__new-card-url {
+  width: 80%;
+  padding-bottom: 14px;
+  margin: 50px auto 0;
+  border: 0;
+  border-bottom: 1px solid #00000033;
+}
+
+.popup__lightbox-item {
+    position: fixed;
+    display: flex;
+    margin-top: 90px;
+    margin-left: auto;
+    margin-right: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: fit-content;
+    height: fit-content; 
+  }
+
+
+.popup__lightbox-window {
+  margin: 40px 10px 0 0;
+  width: fit-content;
+  height: fit-content; 
+}
+
+.popup__lightbox-image {
+  object-fit: contain;
+  max-width: 65vw;
+  max-height: 65vh;
+}
+
+.popup__lightbox-caption {
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+} */

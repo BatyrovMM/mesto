@@ -6,12 +6,14 @@
   <meta name="author" content="Малик Батыров">
   <meta name="description" content="Проектная работа №4">
   <meta name="keywords" content="путешествия, место, адаптивная, вёрстка, проектная, работа, javascript, 4">
+  <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="pages/index.css">
   <title>Место</title>
 </head>
 <body>
 <div class="page">
-  <section class="popup_none popup">
+  <!-- Попап редактирования имени -->
+  <div class="popup_none popup popup__edit">
     <div class="popup__item">
     <div class="popup__window">
       <h2 class="popup__redact">Редактировать профиль</h2>
@@ -23,7 +25,31 @@
     </div>
     <button class="popup__close" type="button"></button>
     </div>
-  </section>
+  </div>
+<!-- Попап добавления фото -->
+  <div class="popup_none popup popup__new-card">
+    <div class="popup__item">
+    <div class="popup__window">
+      <h2 class="popup__redact">Новое место</h2>
+      <form class="popup__new-card-add">
+        <input class="popup__new-card-name" placeholder="Название" type="text">
+        <input class="popup__new-card-url" placeholder="Ссылка на картинку" type="url">
+        <button type="button" class="popup__new-card-save">Создать</button>
+      </form>
+    </div>
+    <button class="popup__close" type="button"></button>
+    </div>
+</div>
+<!-- Попап с фото -->
+<div class="popup_none popup popup__lightbox">
+  <div class="popup__lightbox-item">
+    <figure class="popup__lightbox-window">
+      <img class="popup__lightbox-image" src="" alt="фотокарточка">
+      <figcaption class="popup__lightbox-caption"></figcaption>
+    </figure>
+  <button class="popup__close" type="button"></button>
+  </div>
+</div>
   <header class="header">
     <img src="images/mesto__logo.svg" alt="логотип `Место`" class="header__logo">
   </header>
@@ -31,67 +57,31 @@
   <section class="profile">
     <img src="images/jack-kusto.jpg" alt="аватар профиля" class="profile__avatar">
     <div class="profile__info">
-      <h1 class="profile__name">Жак-Ив Кусто</h1>
+      <h1 class="profile__name">Просто космос</h1>
       <button class="profile__edit" type="button"></button>
-      <p class="profile__status">Исследователь океана</p>
+      <p class="profile__status">О каком я знаю только то - что он есть.</p>
     </div>
     <button class="profile__add-button" type="button"></button>
   </section>
   <section class="cards">
-    <div class="card">
-      <img class="card__photo" src="images/mercury-1.jpg" alt="Меркурий">
-      <button class="card__delete" type="button"></button>
-      <div class="card__photo-description">
-        <p class="card__photo-name">Меркурий</p>
-        <button class="card__like" type="button"></button>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card__photo" src="images/venus-2.jpg" alt="Венера">
-      <button class="card__delete" type="button"></button>
-      <div class="card__photo-description">
-        <p class="card__photo-name">Венера</p>
-        <button class="card__like" type="button"></button>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card__photo" src="images/earth-3.jpg" alt="Земля">
-      <button class="card__delete" type="button"></button>
-      <div class="card__photo-description">
-        <p class="card__photo-name">Земля</p>
-        <button class="card__like" type="button"></button>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card__photo" src="images/mars-4.jpg" alt="Марс">
-      <button class="card__delete" type="button"></button>
-      <div class="card__photo-description">
-        <p class="card__photo-name">Марс</p>
-        <button class="card__like" type="button"></button>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card__photo" src="images/jupiter-5.jpg" alt="Юпитер">
-      <button class="card__delete" type="button"></button>
-      <div class="card__photo-description">
-        <p class="card__photo-name">Юпитер</p>
-        <button class="card__like" type="button"></button>
-      </div>
-    </div>
-    <div class="card">
-      <img class="card__photo" src="images/saturn-6.jpg" alt="Сатурн">
-      <button class="card__delete" type="button"></button>
-      <div class="card__photo-description">
-        <p class="card__photo-name">Сатурн</p>
-        <button class="card__like" type="button"></button>
-      </div>
-    </div>
+  <!-- Место для фотокарт. -->
   </section>
   </main>
   <footer class="footer">
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
 </div>
+<!-- Фотокарты -->
+<template id="new-card">
+  <div class="card">
+    <img class="card__photo" src="" alt="фотокарточка">
+    <button class="card__delete" type="button"></button>
+    <div class="card__photo-description">
+      <p class="card__photo-name"></p>
+      <button class="card__like" type="button"></button>
+    </div>
+  </div>
+</template>
 <script src="js/script.js"></script>
 </body>
 </html>

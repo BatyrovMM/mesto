@@ -1,0 +1,13 @@
+.popup__lightbox-image {
+  object-fit: contain;
+  max-width: 65vw;
+  max-height: 65vh;
+}
+
+/* @media screen and (max-width: 500px) {
+  .popup__lightbox-image {
+    object-fit: contain;
+    width: 310px;
+    height: 310px;
+  }
+} */
