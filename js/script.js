@@ -112,8 +112,8 @@ const closeButtonCardAdd = popupCardAdd.querySelector('.popup__close');
 
 function openPopupCardAdd() {
   popupCardAdd.classList.remove('popup_none');
-  nameChange.value = profileName.textContent;
-  statusChange.value = profileStatus.textContent;
+  cardAddName.value = '';
+  cardAddUrl.value = '';
 };
 
 function closePopupCardAdd() {
