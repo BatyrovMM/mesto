@@ -1,7 +1,17 @@
 .popup__name-change {
   width: 80%;
-  padding-bottom: 14px;
-  margin: 50px auto 0;
+  min-width: 200px;
+  padding: 0 0 14px 0;
+  margin: 50px 0 0;
   border: 0;
   border-bottom: 1px solid #00000033;
+}
+
+@media screen and (max-width: 500px) {
+  .popup__name-change {
+    margin: 36px 0 20px;
+    padding: 0 0 12px 0;
+    font-size: 12px;
+    line-height: 15px;
+  }
 }

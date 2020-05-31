@@ -1,11 +1,11 @@
 .popup__lightbox-window {
-  margin: 40px 10px 0 0;
   width: fit-content;
-  height: fit-content; 
+  height: fit-content;
+  margin: 0;
 }
 
 @media screen and (max-width: 500px) {
   .popup__lightbox-window {
-    margin: 90px 0 0;
+    
   }
 }

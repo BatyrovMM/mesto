@@ -10,12 +10,12 @@ const closeButtonFormEdit = popupEdit.querySelector('.popup__close');
 const statusChange = popupEdit.querySelector('.popup__status-change');
 
 function openPopupEdit() {
-  popupEdit.classList.remove('popup_none');
+  popupEdit.classList.add('popup_active');
   nameChange.value = profileName.textContent;
   statusChange.value = profileStatus.textContent;
 }
 function closePopupEdit() {
-  popupEdit.classList.add('popup_none');
+  popupEdit.classList.remove('popup_active');
 };
 
 function saveChanges() {
@@ -88,7 +88,7 @@ function arraysCards(name, link) {
   cardFromArrays.querySelector('.card__photo').addEventListener('click', function () {      //Отвечает за lightBox
     lightboxImage.src = link;
     lightboxCaption.textContent = name;
-    lightBox.classList.remove('popup_none');
+    lightBox.classList.add('popup_active');
   });
 
   sectionCards.prepend(cardFromArrays);
@@ -111,13 +111,13 @@ const cardAddUrl = popupCardAdd.querySelector('.popup__new-card-url');
 const closeButtonCardAdd = popupCardAdd.querySelector('.popup__close');
 
 function openPopupCardAdd() {
-  popupCardAdd.classList.remove('popup_none');
+  popupCardAdd.classList.add('popup_active');
   cardAddName.value = '';
   cardAddUrl.value = '';
 };
 
 function closePopupCardAdd() {
-  popupCardAdd.classList.add('popup_none');
+  popupCardAdd.classList.remove('popup_active');
 };
 
 
@@ -141,7 +141,7 @@ const lightboxCaption = lightBox.querySelector('.popup__lightbox-caption');
 const closeButtonLightBox = lightBox.querySelector('.popup__close');
 
 function closeLightBox() {
-  lightBox.classList.add('popup_none');
+  lightBox.classList.remove('popup_active');
 }
 
 closeButtonLightBox.addEventListener('click', closeLightBox);

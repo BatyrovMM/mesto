@@ -1,5 +1,7 @@
 .popup__new-card-add {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   font-weight: normal;
   font-size: 14px;
