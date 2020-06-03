@@ -51,8 +51,6 @@ const lightboxCaption = lightBox.querySelector('.popup__lightbox-caption'); // �
 
 // Функции
 
-
-
 // Открывает попапы
 function openPopup(blockPop) {
   blockPop.classList.add('popup_active');
