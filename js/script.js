@@ -32,7 +32,6 @@ const page = document.querySelector('.page');
 const popupEdit = page.querySelector('.popup__edit');                       // Выбор попапа с формой изменения имени и статуса
 const editButton = page.querySelector('.profile__edit');                    // Выбор кнопки "карандаш"
 const infoSaveChange = popupEdit.querySelector('.popup__info-change');      // Выбор формы изменения имени и статуса
-const closeButton = page.querySelector('.popup__close');                    // Выбор кнопки закрытия
 const profileName = page.querySelector('.profile__name');                   // Выбор тега с именем
 const profileStatus = page.querySelector('.profile__status');               // Выбор тега со статусом
 const nameChange = popupEdit.querySelector('.popup__name-change');          // Выбор инпута смены имени
@@ -52,11 +51,18 @@ const lightboxCaption = lightBox.querySelector('.popup__lightbox-caption'); // �
 
 // Функции
 
+
+
 // Открывает попапы
 function openPopup(blockPop) {
   blockPop.classList.add('popup_active');
-  blockPop.querySelector('.popup__close').addEventListener('click', () => closePopup(blockPop));
-}
+  function removeListener() {
+    const openedPopup = document.querySelector('.popup_active');
+    closePopup(openedPopup);
+    blockPop.querySelector('.popup__close').removeEventListener('click', removeListener);
+  };
+    blockPop.querySelector('.popup__close').addEventListener('click', removeListener);
+  };
 
 // Закрывает попапы
 function closePopup(blockPop) {
@@ -65,9 +71,9 @@ function closePopup(blockPop) {
 
 // Открытие попапа с пустыми инпутами (форма изменения имени и статуса)
 function openPopupEdit() {
-  openPopup(popupEdit)
   nameChange.value = profileName.textContent;
   statusChange.value = profileStatus.textContent;
+  openPopup(popupEdit);
 };
 
 // Сохраняет изменения в форме изменения имени и статуса
@@ -84,16 +90,18 @@ function saveChanges(event) {
 // Функция тела фотокарточек
 function createCards(name, link) {
   const cardFromArrays = cardTemplate.cloneNode(true);
-  const cardPhoto = cardFromArrays.querySelector('.card__photo')
+  const cardPhoto = cardFromArrays.querySelector('.card__photo');
+  const cardLike = cardFromArrays.querySelector('.card__like');
+  const cardDelete = cardFromArrays.querySelector('.card__delete');
   cardFromArrays.querySelector('.card__photo-name').textContent = name;
   cardPhoto.src = link;
   cardPhoto.alt = name;
 
-  cardFromArrays.querySelector('.card__like').addEventListener('click', function (evt) {      // Отвечает за лайк
-  evt.target.classList.toggle('card__like_active');
+  cardLike.addEventListener('click', function (evt) {                                         // Отвечает за лайк
+    evt.target.classList.toggle('card__like_active');
   });
 
-  cardFromArrays.querySelector('.card__delete').addEventListener('click', function (evt) {    // Отвечает за удаление
+  cardDelete.addEventListener('click', function (evt) {                                       // Отвечает за удаление
     evt.target.closest('.card').remove();
   });
 
@@ -106,22 +114,24 @@ function createCards(name, link) {
   return cardFromArrays;
 };
 
+// Функция вставки фото, в самом начале
+function prependNewCard(name, link) {
+  sectionCards.prepend(createCards(name, link));
+}
+
 // Достаём фотокарточки из массива и вставляем в cards
-initialCards.forEach(function (item) {
-  sectionCards.prepend(createCards(item.name, item.link));
-});
+function loadCards() {
+  initialCards.forEach( (item) => {
+    prependNewCard(item.name, item.link);
+  });
+}
 
 // Открытие попапа с пустыми инпутами (форма добавления фотокарточек)
 function openPopupCardAdd() {
-  openPopup(popupCardAdd);
   cardAddName.value = '';
   cardAddUrl.value = '';
+  openPopup(popupCardAdd);
 };
-
-// Вставляем фотокарточки в cards
-function prependNewCard() {
-  sectionCards.prepend(createCards(cardAddName.value, cardAddUrl.value));
-}
 
 // Добавляет новые фотокарточки
 function addNewCard(event) {
@@ -129,7 +139,7 @@ function addNewCard(event) {
   
   createCards(cardAddName.value, cardAddUrl.value);
 
-  prependNewCard()
+  prependNewCard(cardAddName.value, cardAddUrl.value);                
 
   closePopup(popupCardAdd);
 }
@@ -138,3 +148,5 @@ editButton.addEventListener('click', openPopupEdit);          // Кнопка "�
 infoSaveChange.addEventListener('submit', saveChanges);       // Отправка формы изменения имени и статуса
 cardAddButton.addEventListener('click', openPopupCardAdd);    // Кнопка "плюс"
 cardAddSave.addEventListener('submit', addNewCard);           // Отправка формы добавления фотокарточки
+
+loadCards();
