@@ -51,19 +51,31 @@ const lightboxCaption = lightBox.querySelector('.popup__lightbox-caption'); // �
 
 // Функции
 
-// Открывает попапы
+// Обработчик нажатия на кнопку "крестик"
+function closeButtonHandler() { 
+  const openedPopup = document.querySelector('.popup_active');
+  closePopup(openedPopup);
+}
+
+// Добавление слушателя к попапам
+function addPopupListener(blockPop) {
+  blockPop.querySelector('.popup__close').addEventListener('click', closeButtonHandler);
+};
+
+// Удаление слушателя у попапов 
+function removePopupListener(blockPop) {
+  blockPop.querySelector('.popup__close').removeEventListener('click', closeButtonHandler);
+};
+
+// Открывает попап со слушателем
 function openPopup(blockPop) {
   blockPop.classList.add('popup_active');
-  function removeListener() {
-    const openedPopup = document.querySelector('.popup_active');
-    closePopup(openedPopup);
-    blockPop.querySelector('.popup__close').removeEventListener('click', removeListener);
-  };
-    blockPop.querySelector('.popup__close').addEventListener('click', removeListener);
-  };
+  addPopupListener(blockPop)
+};
 
-// Закрывает попапы
-function closePopup(blockPop) {
+// Закрывает попап и удаляет слушатель
+function closePopup(blockPop) { 
+  removePopupListener(blockPop)
   blockPop.classList.remove('popup_active')
 }
 
@@ -117,7 +129,7 @@ function prependNewCard(name, link) {
   sectionCards.prepend(createCards(name, link));
 }
 
-// Достаём фотокарточки из массива и вставляем в cards
+// Функция: при вызове загрузит карты из массива
 function loadCards() {
   initialCards.forEach( (item) => {
     prependNewCard(item.name, item.link);
@@ -134,8 +146,6 @@ function openPopupCardAdd() {
 // Добавляет новые фотокарточки
 function addNewCard(event) {
   event.preventDefault()
-  
-  createCards(cardAddName.value, cardAddUrl.value);
 
   prependNewCard(cardAddName.value, cardAddUrl.value);                
 
@@ -147,4 +157,4 @@ infoSaveChange.addEventListener('submit', saveChanges);       // Отправк�
 cardAddButton.addEventListener('click', openPopupCardAdd);    // Кнопка "плюс"
 cardAddSave.addEventListener('submit', addNewCard);           // Отправка формы добавления фотокарточки
 
-loadCards();
+loadCards();                                                  // Загружаем фотокарточки
