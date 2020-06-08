@@ -31,51 +31,71 @@ const page = document.querySelector('.page');
 // Попап для смены имени
 const popupEdit = page.querySelector('.popup__edit');                       // Выбор попапа с формой изменения имени и статуса
 const editButton = page.querySelector('.profile__edit');                    // Выбор кнопки "карандаш"
-const infoSaveChange = popupEdit.querySelector('.popup__info-change');      // Выбор формы изменения имени и статуса
+const infoSaveChange = popupEdit.querySelector('.popup__form');      // Выбор формы изменения имени и статуса
 const profileName = page.querySelector('.profile__name');                   // Выбор тега с именем
 const profileStatus = page.querySelector('.profile__status');               // Выбор тега со статусом
-const nameChange = popupEdit.querySelector('.popup__name-change');          // Выбор инпута смены имени
-const statusChange = popupEdit.querySelector('.popup__status-change');      // Выбор инпута смены статуса
+const nameChange = popupEdit.querySelector('.popup__input_name-change');          // Выбор инпута смены имени
+const statusChange = popupEdit.querySelector('.popup__input_status-change');      // Выбор инпута смены статуса
 const sectionCards = document.querySelector('.cards');                      // Секция cards
 const cardTemplate = document.querySelector('#new-card').content;           // Темплейт фотокарточки
 // Попап для добавления карточек
 const popupCardAdd = page.querySelector('.popup__new-card');                // Выбор попапа с формой добавления фотокарточки
 const cardAddButton = page.querySelector('.profile__add-button');           // Выбор кнопки "плюс"
-const cardAddSave = popupCardAdd.querySelector('.popup__new-card-add');     // Выбор формы добавления фотокарточек
-const cardAddName = popupCardAdd.querySelector('.popup__new-card-name');    // Выбор инпута названия фотокарточки
+const cardAddSave = popupCardAdd.querySelector('.popup__form');     // Выбор формы добавления фотокарточек
+const cardAddName = popupCardAdd.querySelector('.popup__input_new-card-name');    // Выбор инпута названия фотокарточки
 const cardAddUrl = popupCardAdd.querySelector('.popup__new-card-url');      // Выбор инпута ссылки фотокарточки
 // Попап для просмотра фото
 const lightBox = page.querySelector('.popup__lightbox');                    // Выбор попапа "lightbox"
 const lightboxImage = lightBox.querySelector('.popup__lightbox-image');     // Выбор фото в "lightbox"
 const lightboxCaption = lightBox.querySelector('.popup__lightbox-caption'); // Выбор названия в "lightbox"
 
-// Функции
+// Обработчики
 
 // Обработчик нажатия на кнопку "крестик"
 function closeButtonHandler() { 
   const openedPopup = document.querySelector('.popup_active');
   closePopup(openedPopup);
-}
-
-// Добавление слушателя к попапам
-function addPopupListener(blockPop) {
-  blockPop.querySelector('.popup__close').addEventListener('click', closeButtonHandler);
 };
 
-// Удаление слушателя у попапов 
+// Обработчик нажатия на оверлей
+function closeOverlayHandler() { 
+  const openedPopup = document.querySelector('.popup_active');
+    closePopup(openedPopup);
+};
+
+// Обработчик нажатия на кнопку "Escape"
+function ButtonEscapeHandler(evt) { 
+  const openedPopup = document.querySelector('.popup_active');
+  if (evt.key === 'Escape') {
+  closePopup(openedPopup);
+  };
+};
+
+// Функции
+
+// Добавление слушателей к попапам
+function addPopupListener(blockPop) {
+  blockPop.querySelector('.popup__close').addEventListener('click', closeButtonHandler);
+  // blockPop.addEventListener('click', closeOverlayHandler);
+  document.addEventListener('keydown', ButtonEscapeHandler);
+};
+
+// Удаление слушателей у попапов 
 function removePopupListener(blockPop) {
   blockPop.querySelector('.popup__close').removeEventListener('click', closeButtonHandler);
+  // blockPop.removeEventListener('click', closeOverlayHandler);
+  document.removeEventListener('keydown', ButtonEscapeHandler);
 };
 
 // Открывает попап со слушателем
 function openPopup(blockPop) {
   blockPop.classList.add('popup_active');
-  addPopupListener(blockPop)
+  addPopupListener(blockPop);
 };
 
 // Закрывает попап и удаляет слушатель
 function closePopup(blockPop) { 
-  removePopupListener(blockPop)
+  removePopupListener(blockPop);
   blockPop.classList.remove('popup_active')
 }
 

@@ -1,11 +1,11 @@
 .popup__lightbox-item {
-position: relative;
-display: flex;
-justify-content: center;
-align-items: center;
-flex-direction: column;
-font-weight: normal;
-border: 0;
-padding: 0;
-margin: 0;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-weight: normal;
+  border: 0;
+  padding: 0;
+  margin: 0;
 }

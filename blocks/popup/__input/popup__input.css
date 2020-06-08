@@ -1,0 +1,25 @@
+@import url(_name-change/popup__name-change.css);
+@import url(_status-change/popup__status-change.css);
+@import url(_new-card-name/popup__new-card-name.css);
+@import url(_new-card-url/popup__new-card-url.css);
+
+.popup__input {
+  width: 100%;
+  padding: 0 0 14px 0;
+  margin: 50px 0 0;
+  border: 0;
+  border-bottom: 1px solid #00000033;
+}
+
+.popup__input:invalid {
+  border-bottom: 1px solid #FF0000;
+}
+
+@media screen and (max-width: 500px) {
+  .popup__input {
+    margin: 36px 0 0;
+    padding: 0 0 12px 0;
+    font-size: 12px;
+    line-height: 15px;
+  }
+}
