@@ -7,12 +7,11 @@
   position: absolute;
   top: calc(100% + 5px);
   left: 0;
-  word-wrap: break-word;
-  transition: 0.5 linear;
 }
 
 @media screen and (max-width: 500px) {
   .popup__input-error {
-    
+    font-size: 10px;
+    line-height: 10px;
   }
 }
