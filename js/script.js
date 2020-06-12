@@ -1,5 +1,5 @@
 // Массив первых шести фотокарточек
-const initialCards = [ 
+const initialCards = [
   {
     name: 'Outer Life',
     link: 'https://images.unsplash.com/photo-1447433589675-4aaa569f3e05?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
@@ -46,32 +46,32 @@ const cardAddName = popupCardAdd.querySelector('.popup__input_new-card-name');  
 const cardAddUrl = popupCardAdd.querySelector('.popup__new-card-url');            // Выбор инпута ссылки фотокарточки
 // Попап для просмотра фото
 const lightBox = page.querySelector('.popup__lightbox');                          // Выбор попапа "lightbox"
-const lightboxImage = lightBox.querySelector('.popup__lightbox-image');           // Выбор фото в "lightbox"
-const lightboxCaption = lightBox.querySelector('.popup__lightbox-caption');       // Выбор названия в "lightbox"
+const lightBoxImage = lightBox.querySelector('.popup__lightbox-image');           // Выбор фото в "lightbox"
+const lightBoxCaption = lightBox.querySelector('.popup__lightbox-caption');       // Выбор названия в "lightbox"
 
 // Обработчики
 
 // Обработчик нажатия на кнопку "крестик"
-function closeButtonHandler() { 
+function closeButtonHandler() {
   const openedPopup = document.querySelector('.popup_active');
   closePopup(openedPopup);
-};
+}
 
 // Обработчик нажатия на оверлей
-function closeOverlayHandler(evt) { 
+function closeOverlayHandler(evt) {
   if (evt.target.classList.contains('popup')) {
     const openedPopup = document.querySelector('.popup_active');
     closePopup(openedPopup);
   }
-};
+}
 
 // Обработчик нажатия на кнопку "Escape"
-function ButtonEscapeHandler(evt) { 
+function ButtonEscapeHandler(evt) {
   const openedPopup = document.querySelector('.popup_active');
   if (evt.key === 'Escape') {
-  closePopup(openedPopup);
+    closePopup(openedPopup);
   };
-};
+}
 
 // Функции
 
@@ -81,30 +81,30 @@ const formValidationOptions = {
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__form-button',
   inputErrorClass: 'popup__input_invalid',
-};
+}
 
 // Добавление слушателей к попапам
 function addPopupListener(blockPop) {
   blockPop.querySelector('.popup__close').addEventListener('click', closeButtonHandler);
   blockPop.addEventListener('click', closeOverlayHandler);
   document.addEventListener('keydown', ButtonEscapeHandler);
-};
+}
 
 // Удаление слушателей у попапов 
 function removePopupListener(blockPop) {
   blockPop.querySelector('.popup__close').removeEventListener('click', closeButtonHandler);
   blockPop.removeEventListener('click', closeOverlayHandler);
   document.removeEventListener('keydown', ButtonEscapeHandler);
-};
+}
 
 // Открывает попап со слушателем
 function openPopup(blockPop) {
   blockPop.classList.add('popup_active');
   addPopupListener(blockPop);
-};
+}
 
 // Закрывает попап и удаляет слушатель
-function closePopup(blockPop) { 
+function closePopup(blockPop) {
   removePopupListener(blockPop);
   blockPop.classList.remove('popup_active');
   clearError(blockPop);
@@ -117,18 +117,18 @@ function openPopupEdit() {
   const buttonSaveForm = popupEdit.querySelector('.popup__form-button')
   toggleButtonState(false, buttonSaveForm);
   openPopup(popupEdit);
-};
+}
 
 // Сохраняет изменения в форме изменения имени и статуса
 function saveChanges(event) {
   event.preventDefault()
   profileName.textContent = nameChange.value;
   profileStatus.textContent = statusChange.value;
-  
+
   nameChange.value = '';
   statusChange.value = '';
   closePopup(popupEdit);
-};
+}
 
 // Функция тела фотокарточек
 function createCards(name, link) {
@@ -149,13 +149,14 @@ function createCards(name, link) {
   });
 
   cardPhoto.addEventListener('click', function () {                                           // Отвечает за lightBox
-    lightboxImage.src = link;
-    lightboxCaption.textContent = name;
+    lightBoxImage.src = link;
+    lightBoxImage.alt = name;
+    lightBoxCaption.textContent = name;
     openPopup(lightBox);
   });
-  
+
   return cardFromArrays;
-};
+}
 
 // Функция вставки фото, в самом начале
 function prependNewCard(name, link) {
@@ -164,7 +165,7 @@ function prependNewCard(name, link) {
 
 // Функция: при вызове загрузит карты из массива
 function loadCards() {
-  initialCards.forEach( (item) => {
+  initialCards.forEach((item) => {
     prependNewCard(item.name, item.link);
   });
 }
@@ -176,24 +177,16 @@ function openPopupCardAdd() {
   const buttonSaveForm = popupCardAdd.querySelector('.popup__form-button')
   toggleButtonState(true, buttonSaveForm);
   openPopup(popupCardAdd);
-};
+}
 
 // Добавляет новые фотокарточки
 function addNewCard(event) {
   event.preventDefault()
 
-  prependNewCard(cardAddName.value, cardAddUrl.value);                
+  prependNewCard(cardAddName.value, cardAddUrl.value);
 
   closePopup(popupCardAdd);
 }
-
-// Чистит ошибки валидации
-function clearError(blockPop) {
-  const [...error] = blockPop.querySelectorAll('.popup__input-error');
-  const [...inputError] = blockPop.querySelectorAll('.popup__input');
-  error.forEach(element => element.textContent = '');
-  inputError.forEach(element => element.classList.remove('popup__input_invalid'));
-};
 
 editButton.addEventListener('click', openPopupEdit);          // Кнопка "карандаш"
 infoSaveChange.addEventListener('submit', saveChanges);       // Отправка формы изменения имени и статуса
