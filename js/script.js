@@ -66,11 +66,11 @@ function closeOverlayHandler(evt) {
 }
 
 // Обработчик нажатия на кнопку "Escape"
-function ButtonEscapeHandler(evt) {
+function buttonEscapeHandler(evt) {
   const openedPopup = document.querySelector('.popup_active');
   if (evt.key === 'Escape') {
     closePopup(openedPopup);
-  };
+  }
 }
 
 // Функции
@@ -87,14 +87,14 @@ const formValidationOptions = {
 function addPopupListener(blockPop) {
   blockPop.querySelector('.popup__close').addEventListener('click', closeButtonHandler);
   blockPop.addEventListener('click', closeOverlayHandler);
-  document.addEventListener('keydown', ButtonEscapeHandler);
+  document.addEventListener('keydown', buttonEscapeHandler);
 }
 
 // Удаление слушателей у попапов 
 function removePopupListener(blockPop) {
   blockPop.querySelector('.popup__close').removeEventListener('click', closeButtonHandler);
   blockPop.removeEventListener('click', closeOverlayHandler);
-  document.removeEventListener('keydown', ButtonEscapeHandler);
+  document.removeEventListener('keydown', buttonEscapeHandler);
 }
 
 // Открывает попап со слушателем

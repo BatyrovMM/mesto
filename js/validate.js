@@ -23,11 +23,7 @@ const checkInputValidity = (formElement, inputElement, options) => {
 
 // Включение/выключение кнопки
 const toggleButtonState = (inputList, buttonElement) => {
-  if (inputList) {
-    buttonElement.disabled = true;
-  } else {
-    buttonElement.disabled = false;
-  }
+  buttonElement.disabled = !!inputList;
 };
 
 // Добавляет слушатели
@@ -52,7 +48,7 @@ function clearError(blockPop) {
   const [...inputError] = blockPop.querySelectorAll('.popup__input');
   error.forEach(element => element.textContent = '');
   inputError.forEach(element => element.classList.remove('popup__input_invalid'));
-};
+}
 
 //Включение валидации
 const enableValidation = (options) => {
