@@ -1,23 +1,41 @@
+// Импорт
 import {initialCards, Card} from './Card.js';
-
+import {FormValidator} from './FormValidator.js';
 
 // Все объявленные константы
 const page = document.querySelector('.page');
+
 // Попап для смены имени
-const popupEdit = page.querySelector('.popup__edit');                             // Выбор попапа с формой изменения имени и статуса
-const editButton = page.querySelector('.profile__edit');                          // Выбор кнопки "карандаш"
-const infoSaveChange = popupEdit.querySelector('.popup__form');                   // Выбор формы изменения имени и статуса
-const profileName = page.querySelector('.profile__name');                         // Выбор тега с именем
-const profileStatus = page.querySelector('.profile__status');                     // Выбор тега со статусом
-const nameChange = popupEdit.querySelector('.popup__input_name-change');          // Выбор инпута смены имени
-const statusChange = popupEdit.querySelector('.popup__input_status-change');      // Выбор инпута смены статуса
-const sectionCards = document.querySelector('.cards');                            // Секция cards
+// Выбор попапа с формой изменения имени и статуса
+const popupEdit = page.querySelector('.popup__edit');
+// Выбор кнопки "карандаш"
+const editButton = page.querySelector('.profile__edit');
+// Выбор всей "формы"
+const [...formValidation] = document.querySelectorAll('.popup__form');
+// Выбор формы изменения имени и статуса
+const infoSaveChange = popupEdit.querySelector('.popup__form');
+// Выбор тега с именем
+const profileName = page.querySelector('.profile__name');
+// Выбор тега со статусом
+const profileStatus = page.querySelector('.profile__status');
+// Выбор инпута смены имени
+const nameChange = popupEdit.querySelector('.popup__input_name-change');
+// Выбор инпута смены статуса
+const statusChange = popupEdit.querySelector('.popup__input_status-change');
+// Секция cards
+const sectionCards = document.querySelector('.cards');
+
 // Попап для добавления карточек
-const popupCardAdd = page.querySelector('.popup__new-card');                      // Выбор попапа с формой добавления фотокарточки
-const cardAddButton = page.querySelector('.profile__add-button');                 // Выбор кнопки "плюс"
-const cardAddSave = popupCardAdd.querySelector('.popup__form');                   // Выбор формы добавления фотокарточек
-const cardAddName = popupCardAdd.querySelector('.popup__input_new-card-name');    // Выбор инпута названия фотокарточки
-const cardAddUrl = popupCardAdd.querySelector('.popup__new-card-url');            // Выбор инпута ссылки фотокарточки
+// Выбор попапа с формой добавления фотокарточки
+const popupCardAdd = page.querySelector('.popup__new-card');                      
+ // Выбор кнопки "плюс"
+const cardAddButton = page.querySelector('.profile__add-button');                
+// Выбор формы добавления фотокарточек
+const cardAddSave = popupCardAdd.querySelector('.popup__form');                   
+// Выбор инпута названия фотокарточки
+const cardAddName = popupCardAdd.querySelector('.popup__input_new-card-name');
+// Выбор инпута ссылки фотокарточки
+const cardAddUrl = popupCardAdd.querySelector('.popup__new-card-url');
 
 // Обработчики
 
@@ -77,7 +95,11 @@ function openPopup(blockPop) {
 function closePopup(blockPop) {
   removePopupListener(blockPop);
   blockPop.classList.remove('popup_active');
-  clearError(blockPop);
+  
+  formValidation.forEach((item) => {
+    const clear = new FormValidator(formValidationOptions, item);
+    clear.clearError(blockPop);
+  });
 }
 
 // Открытие попапа с пустыми инпутами (форма изменения имени и статуса)
@@ -85,7 +107,12 @@ function openPopupEdit() {
   nameChange.value = profileName.textContent;
   statusChange.value = profileStatus.textContent;
   const buttonSaveForm = popupEdit.querySelector('.popup__form-button')
-  toggleButtonState(false, buttonSaveForm);
+  
+  formValidation.forEach((item) => {
+    const buttonSave = new FormValidator(formValidationOptions, item);
+    buttonSave.toggleButtonState(false, buttonSaveForm);
+  });
+
   openPopup(popupEdit);
 }
 
@@ -114,14 +141,17 @@ function loadCards() {
   });
 }
 
-//Переименовать некоторые функции и доделать добавление карт. Начать форму валидации
-
 // Открытие попапа с пустыми инпутами (форма добавления фотокарточек)
 function openPopupCardAdd() {
   cardAddName.value = '';
   cardAddUrl.value = '';
   const buttonSaveForm = popupCardAdd.querySelector('.popup__form-button')
-  toggleButtonState(true, buttonSaveForm);
+  
+  formValidation.forEach((item) => {
+    const buttonSave = new FormValidator(formValidationOptions, item);
+    buttonSave.toggleButtonState(true, buttonSaveForm);
+  });
+
   openPopup(popupCardAdd);
 }
 
@@ -140,13 +170,27 @@ function addNewCard(event) {
   closePopup(popupCardAdd);
 }
 
-editButton.addEventListener('click', openPopupEdit);          // Кнопка "карандаш"
-infoSaveChange.addEventListener('submit', saveChanges);       // Отправка формы изменения имени и статуса
-cardAddButton.addEventListener('click', openPopupCardAdd);    // Кнопка "плюс"
-cardAddSave.addEventListener('submit', addNewCard);           // Отправка формы добавления фотокарточки
+// Кнопка "карандаш"
+editButton.addEventListener('click', openPopupEdit);
+// Отправка формы изменения имени и статуса
+infoSaveChange.addEventListener('submit', saveChanges);
+// Кнопка "плюс"
+cardAddButton.addEventListener('click', openPopupCardAdd);
+// Отправка формы добавления фотокарточки
+cardAddSave.addEventListener('submit', addNewCard);
+// Загружаем фотокарточки
+loadCards();
 
-loadCards();                                                  // Загружаем фотокарточки
+// Функция валидации из модуля
+function enableValidation() {
+  formValidation.forEach((item) => {
+    const validation = new FormValidator(formValidationOptions, item);
+    validation.enableValidation();
+  });
+}
 
-enableValidation(formValidationOptions);                      // Включаем валидацию с данными из шаблона
+// Включаем валидацию
+enableValidation();
 
+// Экспорт
 export {openPopup}

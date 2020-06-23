@@ -1,3 +1,4 @@
+// Импорт
 import {openPopup} from './script.js'
 
 // Массив первых шести фотокарточек
@@ -96,4 +97,5 @@ class Card {
   }
 }
 
+// Экспорт
 export {initialCards, Card}
