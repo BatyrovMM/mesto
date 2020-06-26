@@ -10,8 +10,6 @@ const page = document.querySelector('.page');
 const popupEdit = page.querySelector('.popup__edit');
 // Выбор кнопки "карандаш"
 const editButton = page.querySelector('.profile__edit');
-// Выбор всей "формы"
-const [...formValidation] = document.querySelectorAll('.popup__form');
 // Выбор формы изменения имени и статуса
 const infoSaveChange = popupEdit.querySelector('.popup__form');
 // Выбор тега с именем
@@ -37,6 +35,19 @@ const cardAddName = popupCardAdd.querySelector('.popup__input_new-card-name');
 // Выбор инпута ссылки фотокарточки
 const cardAddUrl = popupCardAdd.querySelector('.popup__new-card-url');
 
+// Валидация
+// Выбор всей "формы"
+const [...formValidation] = document.querySelectorAll('.popup__form');
+//Шаблон из классов для валидации
+const formValidationOptions = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__form-button',
+  inputErrorClass: 'popup__input_invalid',
+}
+// Выбор класса FormValidator для работы функций
+const form = new FormValidator(formValidationOptions, formValidation);
+
 // Обработчики
 
 // Обработчик нажатия на кнопку "крестик"
@@ -47,8 +58,8 @@ function closeButtonHandler() {
 
 // Обработчик нажатия на оверлей
 function closeOverlayHandler(evt) {
+  const openedPopup = document.querySelector('.popup_active');
   if (evt.target.classList.contains('popup')) {
-    const openedPopup = document.querySelector('.popup_active');
     closePopup(openedPopup);
   }
 }
@@ -62,14 +73,6 @@ function buttonEscapeHandler(evt) {
 }
 
 // Функции
-
-//Шаблон из классов для валидации
-const formValidationOptions = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__form-button',
-  inputErrorClass: 'popup__input_invalid',
-}
 
 // Добавление слушателей к попапам
 function addPopupListener(blockPop) {
@@ -96,10 +99,7 @@ function closePopup(blockPop) {
   removePopupListener(blockPop);
   blockPop.classList.remove('popup_active');
   
-  formValidation.forEach((item) => {
-    const clear = new FormValidator(formValidationOptions, item);
-    clear.clearError(blockPop);
-  });
+  form.clearError(blockPop);
 }
 
 // Открытие попапа с пустыми инпутами (форма изменения имени и статуса)
@@ -108,10 +108,7 @@ function openPopupEdit() {
   statusChange.value = profileStatus.textContent;
   const buttonSaveForm = popupEdit.querySelector('.popup__form-button')
   
-  formValidation.forEach((item) => {
-    const buttonSave = new FormValidator(formValidationOptions, item);
-    buttonSave.toggleButtonState(false, buttonSaveForm);
-  });
+  form.toggleButtonState(false, buttonSaveForm);
 
   openPopup(popupEdit);
 }
@@ -147,10 +144,7 @@ function openPopupCardAdd() {
   cardAddUrl.value = '';
   const buttonSaveForm = popupCardAdd.querySelector('.popup__form-button')
   
-  formValidation.forEach((item) => {
-    const buttonSave = new FormValidator(formValidationOptions, item);
-    buttonSave.toggleButtonState(true, buttonSaveForm);
-  });
+  form.toggleButtonState(true, buttonSaveForm);
 
   openPopup(popupCardAdd);
 }

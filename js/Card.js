@@ -56,11 +56,12 @@ class Card {
   }
 
   _remove() {
+    this._removeEventListeners()
     this._element.remove()
+    this._element = null;
   }
 
   _lightBoxOpen() {
-    
     document.querySelector('.popup__lightbox-image').src = this._photo;
     document.querySelector('.popup__lightbox-image').alt = this._title;
     document.querySelector('.popup__lightbox-caption').textContent = this._title;
@@ -82,7 +83,23 @@ class Card {
     this._element.querySelector('.card__photo').addEventListener('click', () => {
       this._lightBoxOpen();
     });
-  
+  }
+
+  _removeEventListeners() {
+    // Отвечает за лайк
+    this._element.querySelector('.card__like').removeEventListener('click', () => {
+      this._like();
+    });
+
+    // Отвечает за удаление
+    this._element.querySelector('.card__delete').removeEventListener('click', () => {
+      this._remove()
+    });
+
+    // Отвечает за lightBox
+    this._element.querySelector('.card__photo').removeEventListener('click', () => {
+      this._lightBoxOpen();
+    });
   }
 
   newCard() {
