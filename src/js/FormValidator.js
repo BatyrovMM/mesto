@@ -14,14 +14,14 @@ class FormValidator {
   }
 
   // Скрывает ошибку
-  _hideInputError = (formElement, inputElement) => {
+  _hideInputError(formElement, inputElement) {
     const errorElement = formElement.querySelector(`#${inputElement.id}-error`);
     inputElement.classList.remove(this._inputErrorClass);
     errorElement.textContent = '';
   }
 
   // Проверяет на наличие ошибок
-  _checkInputValidity = (formElement, inputElement) => {
+  _checkInputValidity(formElement, inputElement) {
     if (!inputElement.validity.valid) {
       this._showInputError(formElement, inputElement, inputElement.validationMessage);
     } else {
@@ -30,7 +30,7 @@ class FormValidator {
   }
 
   // Добавляет слушатели
-  _setEventListeners = (formElement) => {
+  _setEventListeners(formElement) {
     const inputList = Array.from(formElement.querySelectorAll(this._inputSelector));
 
     const buttonElement = formElement.querySelector(this._submitButtonSelector);
@@ -44,7 +44,7 @@ class FormValidator {
   }
   
   //Проверка на true/false стандартной валидации
-  _hasInvalidInput = (inputList) => {
+  _hasInvalidInput(inputList) {
     return inputList.some((inputElement) => !inputElement.validity.valid);
   }
   
@@ -57,7 +57,7 @@ class FormValidator {
   }
 
   // Включение/выключение кнопки
-  toggleButtonState = (inputList, buttonElement) => {
+  toggleButtonState(inputList, buttonElement) {
     buttonElement.disabled = !!inputList;
   }
 

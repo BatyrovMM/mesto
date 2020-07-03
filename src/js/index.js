@@ -1,4 +1,5 @@
 // Импорт
+import "../pages/index.css";
 import {initialCards, Card} from './Card.js';
 import {FormValidator} from './FormValidator.js';
 

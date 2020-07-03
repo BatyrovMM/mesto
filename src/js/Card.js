@@ -1,5 +1,5 @@
 // Импорт
-import {openPopup} from './script.js'
+import {openPopup} from './index.js'
 
 // Массив первых шести фотокарточек
 const initialCards = [
