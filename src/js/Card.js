@@ -1,41 +1,36 @@
-// Импорт
-import {openPopup} from './index.js'
-
 // Массив первых шести фотокарточек
 const initialCards = [
   {
-    name: 'Outer Life',
-    link: 'https://images.unsplash.com/photo-1447433589675-4aaa569f3e05?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
-  },
-  {
-    name: 'Outer World',
-    link: 'https://images.unsplash.com/photo-1446941611757-91d2c3bd3d45?ixlib=rb-1.2.1&auto=format&fit=crop&w=733&q=80'
-  },
-  {
-    name: 'Outer Space',
-    link: 'https://images.unsplash.com/photo-1462332420958-a05d1e002413?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1940&q=80'
-  },
-  {
-    name: 'Far From Home',
-    link: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80'
+    name: 'Astronaut',
+    link: 'https://images.unsplash.com/photo-1542649761-0bdd3753c8a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'
   },
   {
     name: 'Space Shuttle',
     link: 'https://images.unsplash.com/photo-1454789415558-bdda08f4eabb?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2000&q=80'
   },
   {
-    name: 'Astronaut',
-    link: 'https://images.unsplash.com/photo-1542649761-0bdd3753c8a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'
+    name: 'Far From Home',
+    link: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&auto=format&fit=crop&w=1352&q=80'
+  },
+  {
+    name: 'Outer Space',
+    link: 'https://images.unsplash.com/photo-1462332420958-a05d1e002413?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1940&q=80'
+  },
+  {
+    name: 'Outer World',
+    link: 'https://images.unsplash.com/photo-1446941611757-91d2c3bd3d45?ixlib=rb-1.2.1&auto=format&fit=crop&w=733&q=80'
+  },
+  {
+    name: 'Outer Life',
+    link: 'https://images.unsplash.com/photo-1447433589675-4aaa569f3e05?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80'
   },
 ];
 
-// Выбор попапа "lightbox"
-const lightBox = document.querySelector('.popup__lightbox');
-
 class Card {
-  constructor(data, template) {
+  constructor({data, handleCardClick}, template) {
     this._title = data.name;
     this._photo = data.link;
+    this._handleCardClick = handleCardClick;
     this._template = template;
   }
 
@@ -61,13 +56,6 @@ class Card {
     this._element = null;
   }
 
-  _lightBoxOpen() {
-    document.querySelector('.popup__lightbox-image').src = this._photo;
-    document.querySelector('.popup__lightbox-image').alt = this._title;
-    document.querySelector('.popup__lightbox-caption').textContent = this._title;
-    openPopup(lightBox);
-  }
-
   _setEventListeners() {
     // Отвечает за лайк
     this._element.querySelector('.card__like').addEventListener('click', () => {
@@ -81,7 +69,7 @@ class Card {
 
     // Отвечает за lightBox
     this._element.querySelector('.card__photo').addEventListener('click', () => {
-      this._lightBoxOpen();
+      this._handleCardClick()
     });
   }
 
@@ -98,7 +86,7 @@ class Card {
 
     // Отвечает за lightBox
     this._element.querySelector('.card__photo').removeEventListener('click', () => {
-      this._lightBoxOpen();
+      this._handleCardClick()
     });
   }
 
