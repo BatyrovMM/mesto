@@ -6,8 +6,8 @@ class PopupWithImage extends Popup {
   }
 
   open(data) {
-    const LightBoxImage = document.querySelector('.popup__lightbox-image')
-    const LightBoxCaption = document.querySelector('.popup__lightbox-caption')
+    const LightBoxImage = this._popupSelector.querySelector('.popup__lightbox-image')
+    const LightBoxCaption = this._popupSelector.querySelector('.popup__lightbox-caption')
     LightBoxImage.src = data.link;
     LightBoxImage.alt = data.name;
     LightBoxCaption.textContent = data.name;

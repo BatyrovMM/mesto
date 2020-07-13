@@ -8,7 +8,7 @@
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/cards/cards.css);
 @import url(../blocks/card/card.css);
-@import url(..//blocks/footer/footer.css);
+@import url(../blocks/footer/footer.css);
 
 div:focus, button:focus {
   outline: none;
