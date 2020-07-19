@@ -3,7 +3,7 @@ class Card {
     this._title = data.name;
     this._photo = data.link;
     this._handleCardClick = handleCardClick;
-    this._template = templateSelector;
+    this._templateSelector = templateSelector;
     this._like = this._like.bind(this);
     this._remove = this._remove.bind(this);
     this._handleCardClick = this._handleCardClick.bind(this);
@@ -11,7 +11,7 @@ class Card {
 
   _cardTemplate() {
     const createCards = document
-    .querySelector(this._template)
+    .querySelector(this._templateSelector)
     .content
     .querySelector('.card')
     .cloneNode(true)

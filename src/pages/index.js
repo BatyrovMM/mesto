@@ -1,11 +1,11 @@
 // Импорт
 import "./index.css";
-import {Card} from '../js/Card.js';
-import {FormValidator} from '../js/FormValidator.js';
-import {PopupWithForm} from '../js/PopupWithForm.js';
-import {PopupWithImage} from '../js/PopupWithImage.js'
-import {UserInfo} from '../js/UserInfo.js'
-import {Section} from '../js/Section.js'
+import {Card} from '../components/Card.js';
+import {FormValidator} from '../components/FormValidator.js';
+import {PopupWithForm} from '../components/PopupWithForm.js';
+import {PopupWithImage} from '../components/PopupWithImage.js'
+import {UserInfo} from '../components/UserInfo.js'
+import {Section} from '../components/Section.js'
 import {initialCards, popupEdit, editButton, nameChange, statusChange, sectionCards, lightBox, popupCardAdd, 
 cardAddButton, formValidation, formValidationOptions} from '../components/constants.js';
 
