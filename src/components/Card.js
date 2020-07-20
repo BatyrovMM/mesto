@@ -48,6 +48,7 @@ class Card {
 
     // Отвечает за удаление
     this._element.querySelector('.card__delete').removeEventListener('click', this._remove)
+    
     // Отвечает за lightBox
     this._element.querySelector('.card__photo').removeEventListener('click', this._handleCardClick)
   }

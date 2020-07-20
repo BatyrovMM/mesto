@@ -44,7 +44,9 @@ const lightBox = document.querySelector('.popup__lightbox');
 // Выбор попапа с формой добавления фотокарточки
 const popupCardAdd = page.querySelector('.popup__new-card');                      
 // Выбор кнопки "плюс"
-const cardAddButton = page.querySelector('.profile__add-button');                
+const cardAddButton = page.querySelector('.profile__add-button');
+// Выбор попапа удаления
+const popupDeleteCard = page.querySelector('.popup__delete-card') 
 
 // Валидация
 // Выбор всей "формы"
@@ -57,4 +59,4 @@ const formValidationOptions = {
   inputErrorClass: 'popup__input_invalid',
 }
 
-export {initialCards, popupEdit, editButton, nameChange, statusChange, sectionCards, lightBox, popupCardAdd, cardAddButton, formValidation, formValidationOptions}
+export {initialCards, popupEdit, editButton, nameChange, statusChange, sectionCards, lightBox, popupCardAdd, cardAddButton, popupDeleteCard, formValidation, formValidationOptions}

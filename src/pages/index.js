@@ -1,19 +1,49 @@
 // Импорт
 import "./index.css";
+import {Api} from '../components/API.js';
 import {Card} from '../components/Card.js';
 import {FormValidator} from '../components/FormValidator.js';
 import {PopupWithForm} from '../components/PopupWithForm.js';
 import {PopupWithImage} from '../components/PopupWithImage.js'
 import {UserInfo} from '../components/UserInfo.js'
 import {Section} from '../components/Section.js'
-import {initialCards, popupEdit, editButton, nameChange, statusChange, sectionCards, lightBox, popupCardAdd, 
+import {initialCards, popupEdit, editButton, nameChange, statusChange, sectionCards, lightBox, popupCardAdd, popupDeleteCard, 
 cardAddButton, formValidation, formValidationOptions} from '../components/constants.js';
+
+//////////////////////////////
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-13/',
+  headers: {
+    authorization: '2c19e651-b945-42b9-b74c-9d75647e0f4e',
+    'Content-Type': 'application/json'
+  },
+});
+
+function getUserInfo() {
+  api.getUserInfo()
+  .then((user) => {
+    aboutUser.getUserInfo(user.name, user.about, user.avatar);
+    aboutUser.setUserInfo(user);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+}
+
+getUserInfo();
+
+api.getInitialCards()
+.then((res) => {
+  console.log(res)
+});
+//////////////////////////////
 
 // Выбор тега имени и статуса
 const aboutUser = new UserInfo(
   {
     profileName: '.profile__name', 
-    profileStatus: '.profile__status'
+    profileStatus: '.profile__status',
+    profileAvatar: '.profile__avatar'
   }
 );
 // Выбор попапа "lightbox"

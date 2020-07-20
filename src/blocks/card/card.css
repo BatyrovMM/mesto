@@ -3,7 +3,9 @@
 @import url(__photo/card__photo.css);
 @import url(__photo-description/card__photo-description.css);
 @import url(__photo-name/card__photo-name.css);
+@import url(__like-box/card__like-box.css);
 @import url(__like/card__like.css);
+@import url(__like-count/card__like-count.css);
 @import url(__like/_active/card__like_active.css);
 
 

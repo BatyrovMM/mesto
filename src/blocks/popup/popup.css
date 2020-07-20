@@ -12,6 +12,7 @@
 @import url(__lightbox-window/popup__lightbox-window.css);
 @import url(__lightbox-image/popup__lightbox-image.css);
 @import url(__lightbox-caption/popup__lightbox-caption.css);
+@import url(__delete-card/popup__delete-card.css);
 @import url(__close/popup__close.css);
 @import url(_active/popup_active.css);
 

@@ -16,11 +16,14 @@
   </header>
   <main class="content">
   <section class="profile">
-    <img src="images/jack-kusto.jpg" alt="аватар профиля" class="profile__avatar">
+    <div class="profile__avatar-box">
+      <img alt="аватар профиля" class="profile__avatar">
+      <button class="profile__avatar-edit" type="button"></button>
+    </div>
     <div class="profile__info">
-      <h1 class="profile__name">Просто космос</h1>
+      <h1 class="profile__name"></h1>
       <button class="profile__edit" type="button"></button>
-      <p class="profile__status">О каком я знаю только то - что он есть.</p>
+      <p class="profile__status"></p>
     </div>
     <button class="profile__add-button" type="button"></button>
   </section>
@@ -75,6 +78,28 @@
       <p class="popup__lightbox-caption"></p>
   </div>
 </div>
+<!-- Попап удаления фото -->
+<div class="popup popup__delete-card">
+  <div class="popup__window">
+    <h2 class="popup__redact">Вы уверены?</h2>
+    <button type="submit" class="popup__form-button">Да</button>
+    <button class="popup__close" type="button"></button>
+  </div>
+</div>
+<!-- Попап смены аватара -->
+<div class="popup popup__new-avatar">
+  <div class="popup__window">
+    <h2 class="popup__redact">Новое место</h2>
+    <form class="popup__form" novalidate>
+      <label class="popup__label">
+      <input class="popup__input popup__new-avatar-url" id="input-avatar-url" name="link" placeholder="Ссылка на картинку" type="url" required autocomplete="off">
+      <span class="popup__input-error" id="input-avatar-url-error"></span>
+      </label>
+      <button type="submit" class="popup__form-button popup__form-button_disabled" disabled>Создать</button>
+    </form>
+    <button class="popup__close" type="button"></button>
+  </div>
+</div>
 <!-- Фотокарты -->
 <template id="new-card">
   <div class="card">
@@ -82,7 +107,10 @@
     <button class="card__delete" type="button"></button>
     <div class="card__photo-description">
       <p class="card__photo-name"></p>
+      <div class="card__like-box">
       <button class="card__like" type="button"></button>
+      <p class="card__like-count">0</p>
+      </div>
     </div>
   </div>
 </template>
