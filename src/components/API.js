@@ -5,8 +5,41 @@ export class Api {
   }
 
   getUserInfo() {
-    return fetch(`${this.baseUrl}users/me`, {
+    return fetch(`${this.baseUrl}/users/me`, {
       headers: this.headers,
+    })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`error${res.status}`);
+    });
+  }
+
+  sendUserInfo(userName, userAbout) {
+    return fetch(`${this.baseUrl}/users/me`, {
+      method: 'PATCH',
+      headers: this.headers,
+      body: JSON.stringify({
+        name: userName,
+        about: userAbout
+      })
+    })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+      return Promise.reject(`error${res.status}`);
+    });
+  }
+
+  sendUserAvatar(userAvatar) {
+    return fetch(`${this.baseUrl}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this.headers,
+      body: JSON.stringify({
+        avatar: userAvatar
+      })
     })
     .then((res) => {
       if (res.ok) {
@@ -17,7 +50,7 @@ export class Api {
   }
 
   getInitialCards() {
-    return fetch(`${this.baseUrl}cards`, {
+    return fetch(`${this.baseUrl}/cards`, {
       method: 'GET',
       headers: this.headers,
     })
@@ -28,6 +61,5 @@ export class Api {
       return Promise.reject(`error${res.status}`);
     });
   }
-
   // другие методы работы с API
 }

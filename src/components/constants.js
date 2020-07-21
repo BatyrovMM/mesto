@@ -31,8 +31,12 @@ const page = document.querySelector('.page');
 // Попап для смены имени
 // Выбор попапа с формой изменения имени и статуса
 const popupEdit = page.querySelector('.popup__edit');
+// Выбор попапа с формой изменения имени и статуса
+const avatarEdit = page.querySelector('.popup__new-avatar');
 // Выбор кнопки "карандаш"
-const editButton = page.querySelector('.profile__edit');
+const editButtonInfo = page.querySelector('.profile__edit');
+// Кнопка "карандаш" (аватар)
+const editButtonAvatar = page.querySelector('.profile__avatar-edit');
 // Выбор инпута смены имени
 const nameChange = popupEdit.querySelector('.popup__input_name-change');
 // Выбор инпута смены статуса
@@ -59,4 +63,4 @@ const formValidationOptions = {
   inputErrorClass: 'popup__input_invalid',
 }
 
-export {initialCards, popupEdit, editButton, nameChange, statusChange, sectionCards, lightBox, popupCardAdd, cardAddButton, popupDeleteCard, formValidation, formValidationOptions}
+export {initialCards, popupEdit, avatarEdit, editButtonInfo, editButtonAvatar, nameChange, statusChange, sectionCards, lightBox, popupCardAdd, cardAddButton, popupDeleteCard, formValidation, formValidationOptions}
