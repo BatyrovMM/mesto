@@ -26,6 +26,14 @@ const initialCards = [
   },
 ];
 
+// Почему бы и нет?
+function randomCard(arr) {
+  let index = Math.floor(Math.random() * arr.length);
+  return arr[index];
+}
+
+console.log(`Ссылка для создания классной карточки - ${randomCard(initialCards).link}`);
+
 // Все объявленные константы
 const page = document.querySelector('.page');
 // Попап для смены имени
@@ -50,7 +58,7 @@ const popupCardAdd = page.querySelector('.popup__new-card');
 // Выбор кнопки "плюс"
 const cardAddButton = page.querySelector('.profile__add-button');
 // Выбор попапа удаления
-const popupDeleteCard = page.querySelector('.popup__delete-card') 
+const popupDeleteCard = page.querySelector('.popup__delete-card');
 
 // Валидация
 // Выбор всей "формы"
@@ -63,4 +71,4 @@ const formValidationOptions = {
   inputErrorClass: 'popup__input_invalid',
 }
 
-export {initialCards, popupEdit, avatarEdit, editButtonInfo, editButtonAvatar, nameChange, statusChange, sectionCards, lightBox, popupCardAdd, cardAddButton, popupDeleteCard, formValidation, formValidationOptions}
+export {popupEdit, avatarEdit, editButtonInfo, editButtonAvatar, nameChange, statusChange, sectionCards, lightBox, popupCardAdd, cardAddButton, popupDeleteCard, formValidation, formValidationOptions}

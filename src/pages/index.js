@@ -7,43 +7,7 @@ import {PopupWithForm} from '../components/PopupWithForm.js';
 import {PopupWithImage} from '../components/PopupWithImage.js'
 import {UserInfo} from '../components/UserInfo.js'
 import {Section} from '../components/Section.js'
-import {initialCards, popupEdit, avatarEdit, editButtonInfo, editButtonAvatar, nameChange, statusChange, sectionCards, lightBox, popupCardAdd, cardAddButton, popupDeleteCard, formValidation, formValidationOptions} from '../components/constants.js';
-
-//////////////////////////////
-const api = new Api({
-  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-13',
-  headers: {
-    authorization: '2c19e651-b945-42b9-b74c-9d75647e0f4e',
-    'Content-Type': 'application/json'
-  },
-});
-
-function getUserInfo() {
-  api.getUserInfo()
-  .then((user) => {
-    aboutUser.getUserInfo(user.name, user.about, user.avatar);
-    aboutUser.setUserInfo(user);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-}
-
-getUserInfo();
-
-function renderLoad(isLoading, blockPop) {
-  const buttonSaveForm = blockPop.querySelector('.popup__form-button');
-  if (isLoading) {
-    buttonSaveForm.textContent = 'Сохранение...';
-    buttonSaveForm.setAttribute('disabled', true);
-  } else if (blockPop === popupEdit) {
-    buttonSaveForm.textContent = 'Сохранить';
-    buttonSaveForm.removeAttribute('disabled', true);
-  } else {
-    buttonSaveForm.textContent = 'Создать';
-  }
-}
-//////////////////////////////
+import {popupEdit, avatarEdit, editButtonInfo, editButtonAvatar, nameChange, statusChange, sectionCards, lightBox, popupCardAdd, cardAddButton, popupDeleteCard, formValidation, formValidationOptions} from '../components/constants.js';
 
 // Выбор тега имени и статуса
 const aboutUser = new UserInfo(
@@ -57,11 +21,46 @@ const aboutUser = new UserInfo(
 const lightBoxOpen = new PopupWithImage(lightBox);
 // Выбор класса FormValidator для работы функций
 const form = new FormValidator(formValidationOptions, formValidation);
+// Выбор API
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-13',
+  headers: {
+    authorization: '2c19e651-b945-42b9-b74c-9d75647e0f4e',
+    'Content-Type': 'application/json'
+  },
+});
+// Пустая переменная для ID
+let userId;
+
+// Функция загрузки имени из сервера
+function getUserInfo() {
+  api.getUserInfo()
+  .then((user) => {
+    aboutUser.getUserInfo(user.name, user.about, user.avatar);
+    aboutUser.setUserInfo(user);
+    userId = user._id;
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+}
+
+// Функция информирующая о загрузке
+function renderLoad(isLoading, blockPop, value) {
+  const buttonSaveForm = blockPop.querySelector('.popup__form-button');
+  if (isLoading) {
+    buttonSaveForm.textContent = 'Загрузка...';
+    buttonSaveForm.setAttribute('disabled', true);
+  } else {
+    buttonSaveForm.textContent = value;
+    buttonSaveForm.removeAttribute('disabled', true);
+  }
+}
 
 // Сохраняет изменения в форме изменения имени и статуса
 const saveChanges = new PopupWithForm(popupEdit, {
   onSubmit: (item) => {
-    renderLoad(true, popupEdit);
+    renderLoad(true, popupEdit, 'Сохранить');
     api.sendUserInfo(item.name, item.status)
     .then((res) => {
       aboutUser.setUserInfo(res)
@@ -71,7 +70,7 @@ const saveChanges = new PopupWithForm(popupEdit, {
       console.log(err);
     })
     .finally(() => {
-      renderLoad(false, popupEdit);
+      renderLoad(false, popupEdit, 'Сохранить');
     })
   }
 });
@@ -87,9 +86,18 @@ const openPopupEdit = () => {
   saveChanges.open();
 }
 
+// Открытие попапа с пустыми инпутами (форма изменения профиля аватара)
+const openAvatarEdit = () => {
+  const buttonSaveForm = avatarEdit.querySelector('.popup__form-button')
+  form.toggleButtonState(true, buttonSaveForm);
+  form.clearError(avatarEdit);
+  saveAvatar.open();
+}
+
+// Сохранение нового аватара (форма изменения профиля аватара)
 const saveAvatar = new PopupWithForm(avatarEdit, {
   onSubmit: (item) => {
-    renderLoad(true, avatarEdit);
+    renderLoad(true, avatarEdit, 'Создать');
     api.sendUserAvatar(item.avatar)
     .then((res) => {
       aboutUser.setUserInfo(res)
@@ -99,36 +107,50 @@ const saveAvatar = new PopupWithForm(avatarEdit, {
       console.log(err);
     })
     .finally(() => {
-      renderLoad(false, avatarEdit);
+      renderLoad(false, avatarEdit, 'Создать');
     })
   }
 })
 
-// Открытие попапа с пустыми инпутами (форма изменения профиля аватара)
-const openAvatarEdit = () => {
-  const buttonSaveForm = avatarEdit.querySelector('.popup__form-button')
-  form.toggleButtonState(true, buttonSaveForm);
-  form.clearError(avatarEdit);
-  saveAvatar.open();
-}
-
+// Функция рендера карт
 function renderCard(item) {
   const card = new Card({
-    data: item, handleCardClick: () => {
+    data: item, 
+    handleCardClick: () => {
       lightBoxOpen.open(item);
+    },
+    handleDeleteClick: () => {
+      const deleteCard = new PopupWithForm(popupDeleteCard, {
+        onSubmit: () => {
+          renderLoad(true, popupDeleteCard, 'Да');
+          api.deleteCard(card._cardId)
+          .then((res) => {
+            card._remove(res);
+            deleteCard.close();
+          })
+          .catch((err) => {
+            console.log(err);
+          })
+          .finally(() => {
+            renderLoad(false, popupDeleteCard, 'Да');
+          })
+        }
+      });
+      deleteCard.open(item); 
     }
-  },'#new-card');
+  },'#new-card',
+    () => api.addLike(item._id),
+    () => api.removeLike(item._id), userId);
   const cardElement = card.newCard();
   loadCards.addItem(cardElement);
-  popupNewCard.close();
 }
 
 // Константа: при вызове загрузит карты из массива
 const loadCards = new Section({
-  items: initialCards,
-  renderer: renderCard
+  renderer: (item) => {
+    renderCard(item);
+  }
 }, sectionCards)
-
 
 // Открытие попапа с пустыми инпутами (форма добавления фотокарточек)
 const openPopupCardAdd = () => {
@@ -140,9 +162,24 @@ const openPopupCardAdd = () => {
 
 // Добавляет новые фотокарточки
 const popupNewCard = new PopupWithForm(popupCardAdd, {
-  onSubmit: renderCard
+  onSubmit: (item) => {
+    renderLoad(true, popupCardAdd, 'Создать');
+    api.postNewCard(item.name, item.link)
+    .then((res) => {
+      renderCard(res);
+      popupNewCard.close();
+      // Не знаю как должно быть, но при создании карта улетает вниз. Я решил делать рестарт страницы,
+      // ибо при обновлении карточка появляеться наверху.
+      document.location.reload();
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      renderLoad(false, popupCardAdd, 'Создать');
+    })
+  }
 });
-
 
 // Кнопка "карандаш"
 editButtonInfo.addEventListener('click', () => openPopupEdit());
@@ -150,8 +187,18 @@ editButtonInfo.addEventListener('click', () => openPopupEdit());
 cardAddButton.addEventListener('click', () => openPopupCardAdd());
 // Кнопка "карандаш" (аватар)
 editButtonAvatar.addEventListener('click', () => openAvatarEdit());
+
+// Загружаем имя и статус с сервера
+getUserInfo();
+
 // Загружаем фотокарточки
-loadCards.renderItems()
+api.getInitialCards()
+.then((res) => {
+  loadCards.renderItems(res)
+})
+.catch((err) => {
+  console.log(err);
+});
 
 // Функция валидации из модуля
 function enableValidation() {
