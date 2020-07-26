@@ -1,7 +1,3 @@
-@import url(_name-change/popup__name-change.css);
-@import url(_status-change/popup__status-change.css);
-@import url(_new-card-name/popup__new-card-name.css);
-@import url(_new-card-url/popup__new-card-url.css);
 @import url(_invalid/popup__input_invalid.css);
 
 .popup__input {

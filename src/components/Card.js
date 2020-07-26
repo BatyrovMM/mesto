@@ -68,7 +68,7 @@ class Card {
     this._element.querySelector('.card__like').removeEventListener('click', this._like)
 
     // Отвечает за удаление
-    this._element.querySelector('.card__delete').removeEventListener('click', this._remove)
+    this._element.querySelector('.card__delete').removeEventListener('click', this._handleDeleteClick)
     
     // Отвечает за lightBox
     this._element.querySelector('.card__photo').removeEventListener('click', this._handleCardClick)

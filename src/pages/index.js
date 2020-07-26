@@ -1,6 +1,6 @@
 // Импорт
 import "./index.css";
-import {Api} from '../components/API.js';
+import {Api} from '../components/Api.js';
 import {Card} from '../components/Card.js';
 import {FormValidator} from '../components/FormValidator.js';
 import {PopupWithForm} from '../components/PopupWithForm.js';
@@ -168,9 +168,6 @@ const popupNewCard = new PopupWithForm(popupCardAdd, {
     .then((res) => {
       renderCard(res);
       popupNewCard.close();
-      // Не знаю как должно быть, но при создании карта улетает вниз. Я решил делать рестарт страницы,
-      // ибо при обновлении карточка появляеться наверху.
-      document.location.reload();
     })
     .catch((err) => {
       console.log(err);

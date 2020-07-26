@@ -1,19 +1,21 @@
-export class Api {
+class Api {
   constructor(options) {
     this.baseUrl = options.baseUrl;
     this.headers = options.headers;
+  }
+
+  _response(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`error${res.status}`);
   }
 
   getUserInfo() {
     return fetch(`${this.baseUrl}/users/me`, {
       headers: this.headers,
     })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`error${res.status}`);
-    });
+    .then(this._response);
   }
 
   sendUserInfo(userName, userAbout) {
@@ -25,12 +27,7 @@ export class Api {
         about: userAbout
       })
     })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`error${res.status}`);
-    });
+    .then(this._response);
   }
 
   sendUserAvatar(userAvatar) {
@@ -41,12 +38,7 @@ export class Api {
         avatar: userAvatar
       })
     })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`error${res.status}`);
-    });
+    .then(this._response);
   }
 
   getInitialCards() {
@@ -54,12 +46,7 @@ export class Api {
       method: 'GET',
       headers: this.headers,
     })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`error${res.status}`);
-    });
+    .then(this._response);
   }
 
   postNewCard(cardName, cardLink) {
@@ -71,12 +58,7 @@ export class Api {
         link: cardLink
       })
     })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`error${res.status}`);
-    });
+    .then(this._response);
   }
 
   deleteCard(cardId) {
@@ -84,12 +66,7 @@ export class Api {
       method: 'DELETE',
       headers: this.headers,
     })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`error${res.status}`);
-    });
+    .then(this._response);
   }
 
   addLike(cardId) {
@@ -97,12 +74,7 @@ export class Api {
       method: 'PUT',
       headers: this.headers,
     })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`error${res.status}`);
-    });
+    .then(this._response);
   }
   
   removeLike(cardId) {
@@ -110,13 +82,8 @@ export class Api {
       method: 'DELETE',
       headers: this.headers,
     })
-    .then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-      return Promise.reject(`error${res.status}`);
-    });
+    .then(this._response);
   }
-
-
 }
+
+export {Api}

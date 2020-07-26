@@ -35,7 +35,7 @@
     <p class="footer__copyright">&copy; 2020 Mesto Russia</p>
   </footer>
  <!-- Попап редактирования имени -->
- <div class="popup popup__edit">
+ <div class="popup popup_edit">
     <div class="popup__window">
       <h2 class="popup__redact">Редактировать профиль</h2>
       <form class="popup__form" novalidate>
@@ -53,7 +53,7 @@
     </div>
   </div>
 <!-- Попап добавления фото -->
-<div class="popup popup__new-card">
+<div class="popup popup_new-card">
   <div class="popup__window">
     <h2 class="popup__redact">Новое место</h2>
     <form class="popup__form" novalidate>
@@ -62,7 +62,7 @@
       <span class="popup__input-error" id="input-card-name-error"></span>
       </label>
       <label class="popup__label">
-      <input class="popup__input popup__new-card-url" id="input-card-url" name="link" placeholder="Ссылка на картинку" type="url" required autocomplete="off">
+      <input class="popup__input popup__input_new-card-url" id="input-card-url" name="link" placeholder="Ссылка на картинку" type="url" required autocomplete="off">
       <span class="popup__input-error" id="input-card-url-error"></span>
       </label>
       <button type="submit" class="popup__form-button popup__form-button_disabled" disabled>Создать</button>
@@ -71,7 +71,7 @@
   </div>
 </div>
 <!-- Попап с фото -->
-<div class="popup popup__lightbox">
+<div class="popup popup_lightbox">
   <div class="popup__lightbox-item">
     <button class="popup__close" type="button"></button>
       <img class="popup__lightbox-image">
@@ -79,7 +79,7 @@
   </div>
 </div>
 <!-- Попап удаления фото -->
-<div class="popup popup__delete-card">
+<div class="popup popup_delete-card">
   <div class="popup__window">
     <h2 class="popup__redact">Вы уверены?</h2>
     <form class="popup__form" novalidate>
@@ -89,12 +89,12 @@
   </div>
 </div>
 <!-- Попап смены аватара -->
-<div class="popup popup__new-avatar">
+<div class="popup popup_new-avatar">
   <div class="popup__window">
     <h2 class="popup__redact">Обновить аватар</h2>
     <form class="popup__form" novalidate>
       <label class="popup__label">
-      <input class="popup__input popup__new-avatar-url" id="input-avatar-url" name="avatar" placeholder="Ссылка на картинку" type="url" required autocomplete="off">
+      <input class="popup__input popup__input_new-avatar-url" id="input-avatar-url" name="avatar" placeholder="Ссылка на картинку" type="url" required autocomplete="off">
       <span class="popup__input-error" id="input-avatar-url-error"></span>
       </label>
       <button type="submit" class="popup__form-button popup__form-button_disabled" disabled>Создать</button>

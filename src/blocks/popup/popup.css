@@ -1,18 +1,14 @@
 @import url(__window/popup__window.css);
 @import url(__redact/popup__redact.css);
-@import url(__edit/popup__edit.css);
 @import url(__form/popup__form.css);
 @import url(__label/popup__label.css);
 @import url(__input-error/popup__input-error.css);
 @import url(__input/popup__input.css);
 @import url(__form-button/popup__form-button.css);
-@import url(__new-card/popup__new-card.css);
-@import url(__lightbox/popup__lightbox.css);
 @import url(__lightbox-item/popup__lightbox-item.css);
 @import url(__lightbox-window/popup__lightbox-window.css);
 @import url(__lightbox-image/popup__lightbox-image.css);
 @import url(__lightbox-caption/popup__lightbox-caption.css);
-@import url(__delete-card/popup__delete-card.css);
 @import url(__close/popup__close.css);
 @import url(_active/popup_active.css);
 
