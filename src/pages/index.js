@@ -113,7 +113,7 @@ const saveAvatar = new PopupWithForm(avatarEdit, {
 })
 
 // Функция рендера карт
-function renderCard(item) {
+function renderCard(item, place) {
   const card = new Card({
     data: item, 
     handleCardClick: () => {
@@ -142,13 +142,13 @@ function renderCard(item) {
     () => api.addLike(item._id),
     () => api.removeLike(item._id), userId);
   const cardElement = card.newCard();
-  loadCards.addItem(cardElement);
+  loadCards.addItem(cardElement, place);
 }
 
 // Константа: при вызове загрузит карты из массива
 const loadCards = new Section({
   renderer: (item) => {
-    renderCard(item);
+    renderCard(item, 'after');
   }
 }, sectionCards)
 
@@ -166,7 +166,7 @@ const popupNewCard = new PopupWithForm(popupCardAdd, {
     renderLoad(true, popupCardAdd, 'Создать');
     api.postNewCard(item.name, item.link)
     .then((res) => {
-      renderCard(res);
+      renderCard(res, 'before');
       popupNewCard.close();
     })
     .catch((err) => {

@@ -10,8 +10,12 @@ class Section {
     });
   }
 
-  addItem(element) {
-    this._containerSelector.append(element);
+  addItem(element, place) {
+    if (place === 'before') {
+      this._containerSelector.prepend(element);
+    } else {
+      this._containerSelector.append(element);
+    }
   }
 }
 
